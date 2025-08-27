@@ -41,6 +41,10 @@ window.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to create post on-chain', err);
         }
         submitting = true;
-        form.requestSubmit();
+        if (typeof form.requestSubmit === 'function') {
+            form.requestSubmit();
+        } else {
+            form.submit();
+        }
     });
 });
